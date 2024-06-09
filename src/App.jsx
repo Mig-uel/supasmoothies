@@ -3,14 +3,14 @@ import './App.css'
 
 function App() {
   return (
-    <main>
+    <div className='page home'>
       <nav>
         <h1>Supa Smoothies</h1>
         <Link to='/'>Home</Link>
         <Link to='/create'>Create New Smoothie</Link>
       </nav>
       <Outlet />
-    </main>
+    </div>
   )
 }
 
