@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, lazy, Suspense } from 'react'
 import supabase from '../config/supabaseClient'
 
 // components
-import SmoothieCard from '../components/smoothie-card.component'
+const SmoothieCard = lazy(() => import('../components/smoothie-card.component'))
+import { RingLoader } from 'react-spinners'
 
 const HomePage = () => {
   const [smoothies, setSmoothies] = useState(null)
@@ -31,11 +32,13 @@ const HomePage = () => {
       {smoothies ? (
         <div className='smoothies'>
           {/* order-by button */}
-          <div className='smoothie-grid'>
-            {smoothies.map((smoothie) => (
-              <SmoothieCard key={smoothie.id} smoothie={smoothie} />
-            ))}
-          </div>
+          <Suspense fallback={<RingLoader color='#36d7b7' />}>
+            <div className='smoothie-grid'>
+              {smoothies.map((smoothie) => (
+                <SmoothieCard key={smoothie.id} smoothie={smoothie} />
+              ))}
+            </div>
+          </Suspense>
         </div>
       ) : (
         <p>{fetchError}</p>
