@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 
 // route elements
+import HomePage from './pages/home.page.jsx'
 import CreatePage from './pages/create.page.jsx'
 import UpdatePage from './pages/update.page.jsx'
 
@@ -18,6 +19,7 @@ import './index.css'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
+      <Route index path='/' element={<HomePage />} />
       <Route path='/create' element={<CreatePage />} />
       <Route path='/update/:id' element={<UpdatePage />} />
     </Route>
