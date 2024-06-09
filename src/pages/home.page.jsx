@@ -30,9 +30,12 @@ const HomePage = () => {
     <div className='page home'>
       {smoothies ? (
         <div className='smoothies'>
-          {smoothies.map((smoothie) => (
-            <SmoothieCard key={smoothie.id} smoothie={smoothie} />
-          ))}
+          {/* order-by button */}
+          <div className='smoothie-grid'>
+            {smoothies.map((smoothie) => (
+              <SmoothieCard key={smoothie.id} smoothie={smoothie} />
+            ))}
+          </div>
         </div>
       ) : (
         <p>{fetchError}</p>
