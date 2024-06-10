@@ -3,6 +3,7 @@ import supabase from '../config/supabaseClient'
 
 // components
 const SmoothieCard = lazy(() => import('../components/smoothie-card.component'))
+const ErrorCard = lazy(() => import('../components/error-card.component'))
 import { RingLoader } from 'react-spinners'
 
 const HomePage = () => {
@@ -14,7 +15,7 @@ const HomePage = () => {
       const { data, error } = await supabase.from('smoothies').select()
 
       if (error) {
-        setFetchError(error.message)
+        setFetchError(error)
         setSmoothies(null)
       }
 
@@ -40,7 +41,9 @@ const HomePage = () => {
             </div>
           </div>
         ) : (
-          <p>{fetchError}</p>
+          <Suspense fallback={<RingLoader color='#12bca2' />}>
+            <ErrorCard error={fetchError} />
+          </Suspense>
         )}
       </div>
     </Suspense>
