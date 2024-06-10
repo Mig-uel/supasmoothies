@@ -5,6 +5,7 @@ import supabase from '../config/supabaseClient'
 const SmoothieCard = lazy(() => import('../components/smoothie-card.component'))
 const ErrorCard = lazy(() => import('../components/error-card.component'))
 import { RingLoader } from 'react-spinners'
+import { Link } from 'react-router-dom'
 
 const HomePage = () => {
   const [smoothies, setSmoothies] = useState(null)
@@ -36,14 +37,18 @@ const HomePage = () => {
             {/* order-by button */}
             <div className='smoothie-grid'>
               {smoothies.map((smoothie) => (
-                <SmoothieCard key={smoothie.id} smoothie={smoothie} />
+                <Link to={`/update/${smoothie.id}`}>
+                  <SmoothieCard key={smoothie.id} smoothie={smoothie} />
+                </Link>
               ))}
             </div>
           </div>
-        ) : (
+        ) : fetchError ? (
           <Suspense fallback={<RingLoader color='#12bca2' />}>
             <ErrorCard error={fetchError} />
           </Suspense>
+        ) : (
+          <></>
         )}
       </div>
     </Suspense>
