@@ -1,6 +1,5 @@
 import { useEffect, useState, lazy, Suspense } from 'react'
 import supabase from '../config/supabaseClient'
-import { Link } from 'react-router-dom'
 
 // components
 const SmoothieCard = lazy(() => import('../components/smoothie-card.component'))
@@ -37,9 +36,7 @@ const HomePage = () => {
             {/* order-by button */}
             <div className='smoothie-grid'>
               {smoothies.map((smoothie) => (
-                <Link to={`/update/${smoothie.id}`}>
-                  <SmoothieCard key={smoothie.id} smoothie={smoothie} />
-                </Link>
+                <SmoothieCard key={smoothie.id} smoothie={smoothie} />
               ))}
             </div>
           </div>
