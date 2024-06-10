@@ -4,6 +4,10 @@
   --primary: #12bca2;
   --secondary: #6d15df;
 }
+a {
+  color: #333;
+  text-decoration: none;
+}
 h1,
 h2,
 h3 {
