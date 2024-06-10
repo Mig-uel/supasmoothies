@@ -28,22 +28,22 @@ const HomePage = () => {
   }, [])
 
   return (
-    <div className='page home'>
-      {smoothies ? (
-        <div className='smoothies'>
-          {/* order-by button */}
-          <Suspense fallback={<RingLoader color='#36d7b7' />}>
+    <Suspense fallback={<RingLoader color='#12bca2' />}>
+      <div className='page home'>
+        {smoothies ? (
+          <div className='smoothies'>
+            {/* order-by button */}
             <div className='smoothie-grid'>
               {smoothies.map((smoothie) => (
                 <SmoothieCard key={smoothie.id} smoothie={smoothie} />
               ))}
             </div>
-          </Suspense>
-        </div>
-      ) : (
-        <p>{fetchError}</p>
-      )}
-    </div>
+          </div>
+        ) : (
+          <p>{fetchError}</p>
+        )}
+      </div>
+    </Suspense>
   )
 }
 
