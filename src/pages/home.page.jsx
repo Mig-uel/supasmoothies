@@ -9,6 +9,7 @@ import { RingLoader } from 'react-spinners'
 const HomePage = () => {
   const [smoothies, setSmoothies] = useState(null)
   const [fetchError, setFetchError] = useState(null)
+  const [orderBy, setOrderBy] = useState('created_at')
 
   const onDelete = (id) => {
     setSmoothies((oldSmoothies) =>
@@ -39,7 +40,14 @@ const HomePage = () => {
       <div className='page home'>
         {smoothies ? (
           <div className='smoothies'>
-            {/* order-by button */}
+            <div className='order-by'>
+              <p>Order by:</p>
+              <button onClick={() => setOrderBy('created_at')}>
+                Time Created
+              </button>
+              <button onClick={() => setOrderBy('title')}>Title</button>
+              <button onClick={() => setOrderBy('rating')}>Rating</button>
+            </div>
             <div className='smoothie-grid'>
               {smoothies.map((smoothie) => (
                 <SmoothieCard
