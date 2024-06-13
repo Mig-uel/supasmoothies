@@ -26,7 +26,7 @@ const CreatePage = () => {
         .select()
 
       if (error) {
-        throw new Error('Please try again!')
+        throw new Error('Cannot create a new smoothie (Unauthorized)')
       }
 
       setTitle('')
