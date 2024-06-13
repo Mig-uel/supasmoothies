@@ -1,8 +1,10 @@
-# React + Vite
+# Supa Smoothies (A Supabase Demo)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+This is a simple project to demonstrate how to use Supabase as a backend for a simple web application. The application is a smoothie store where users can add smoothies to the store and view all smoothies in the store.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies
+
+- React
+- Supabase
