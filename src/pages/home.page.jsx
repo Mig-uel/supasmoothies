@@ -10,7 +10,7 @@ const HomePage = () => {
   const [smoothies, setSmoothies] = useState(null)
   const [fetchError, setFetchError] = useState(null)
 
-  const handleDelete = (id) => {
+  const onDelete = (id) => {
     setSmoothies((oldSmoothies) =>
       oldSmoothies.filter((oldSmoothie) => oldSmoothie.id !== id)
     )
@@ -45,7 +45,7 @@ const HomePage = () => {
                 <SmoothieCard
                   key={smoothie.id}
                   smoothie={smoothie}
-                  handleDelete={handleDelete}
+                  onDelete={onDelete}
                 />
               ))}
             </div>
