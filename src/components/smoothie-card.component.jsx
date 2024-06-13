@@ -1,7 +1,7 @@
 import supabase from '../config/supabaseClient'
 import { Link } from 'react-router-dom'
 
-const SmoothieCard = ({ smoothie, handleDelete }) => {
+const SmoothieCard = ({ smoothie, onDelete }) => {
   const deleteHandler = async () => {
     const { data, error } = await supabase
       .from('smoothies')
@@ -9,7 +9,7 @@ const SmoothieCard = ({ smoothie, handleDelete }) => {
       .eq('id', smoothie.id)
       .select()
 
-    if (data) handleDelete(smoothie.id)
+    if (data) onDelete(smoothie.id)
   }
 
   return (
