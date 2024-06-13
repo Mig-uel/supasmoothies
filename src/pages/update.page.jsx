@@ -41,17 +41,23 @@ const UpdatePage = () => {
       return
     }
 
-    const { data, error } = await supabase
-      .from('smoothies')
-      .update({ title, method, rating })
-      .eq('id', id)
-      .select()
+    try {
+      const { data, error } = await supabase
+        .from('smoothies')
+        .update({ title, method, rating })
+        .eq('id', id)
+        .select()
 
-    if (error) {
-      setFormError(error.message)
-    } else if (data) {
+      if (data.length === 0 || error) {
+        throw new Error(
+          error?.message || 'Cannot update smoothie (Unauthorized)'
+        )
+      }
+
       setFormError(null)
       navigate('/')
+    } catch (error) {
+      setFormError(error.message)
     }
   }
 
