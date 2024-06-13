@@ -19,7 +19,10 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchSmoothies = async () => {
-      const { data, error } = await supabase.from('smoothies').select()
+      const { data, error } = await supabase
+        .from('smoothies')
+        .select()
+        .order(orderBy, { ascending: false })
 
       if (error) {
         setFetchError(error)
@@ -33,7 +36,7 @@ const HomePage = () => {
     }
 
     fetchSmoothies()
-  }, [])
+  }, [orderBy])
 
   return (
     <Suspense fallback={<RingLoader color='#12bca2' />}>
